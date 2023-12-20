@@ -1,10 +1,13 @@
 import React from "react";
 import "./rightbar.css"
+import { Users } from "../../dummyData";
+import Online from "../online/Online";
 
-export default function Rightbar() {
-    return (
-        <div className="rightbar">
-            <div className="rightbarWrapper">
+export default function Rightbar({ profile }) {
+    
+    const HomeRightbar = () => {
+        return (
+            <>
                 <div className="birthdayContainer">
                     <img src="assets/gift.png" alt="" className="birthdayImg" />
                     <span className="birthdayText">
@@ -14,58 +17,18 @@ export default function Rightbar() {
                 <img src="assets/tigerad.jpg" alt="" className="rightbarAd" />
                 <h4 className="rightbarTitle">Online friends</h4>
                 <ul className="rightbarFriendList">
-                    <li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li>
+                    {Users.map((u) => (
+                        <Online key={u.id} user={ u} />
+                    ))}
 
-                    <li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li><li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li><li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li><li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li><li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li><li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li><li className="rightbarFriend">
-                        <div className="rightbarProfileImgContainer">
-                            <img src="assets/person/Rose-Muhando-I-1320x742.jpg" alt="" className="rightbarProfileImg" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUsername">Rose Muhando</span>
-                    </li>
                 </ul>
+            </>
+        )
+    }
+    return (
+        <div className="rightbar">
+            <div className="rightbarWrapper">
+                
             </div>
         </div>
     )
