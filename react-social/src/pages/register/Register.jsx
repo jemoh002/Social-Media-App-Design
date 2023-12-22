@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "./register.css"
 
 function Register() {
+    const username = useRef();
+    const email = useRef()
+    const password = useRef()
+    const passwordAgain = useRef()
+
+    const handleClick = (e) => {
+        e.preventdefault()
+        if (passwordAgain.current.value !== password.current.value) {
+            password.current.setCustomValidity("Passwords don't match!")
+        }
+    }
   return (
       <div className='login'>
           <div className="loginWrapper">
@@ -10,14 +21,14 @@ function Register() {
                   <span className="loginDesc">Connect with friends and the world around you on Alizocial</span>
               </div>
               <div className="loginRight">
-                  <div className="loginBox">
-                      <input placeholder="Username" className="loginInput" />
-                      <input placeholder="Email" className="loginInput" />
-                      <input placeholder="Password" className="loginInput" />
-                      <input placeholder="Password Again" className="loginInput" />
-                      <button className="loginButton">Sign Up</button>
+                  <form className="loginBox" onSubmit={handleClick}>
+                      <input placeholder="Username" required ref={username} className="loginInput" />
+                      <input placeholder="Email" required ref={email} className="loginInput" type='email' />
+                      <input placeholder="Password" required ref={password} className="loginInput" type='password' minLength="6" />
+                      <input placeholder="Password Again" required ref={passwordAgain} className="loginInput" type='password' />
+                      <button className="loginButton" type='submit'>Sign Up</button>
                       <button className="loginRegisterButton">Log into Account</button>
-                  </div>
+                  </form>
               </div>
           </div>
       
