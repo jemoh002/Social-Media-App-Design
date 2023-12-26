@@ -14,6 +14,7 @@ require("dotenv").config();
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
 
 app.use("/images", express.static(path.join(__dirname, "public/images")))
+// This is how one can access the images thereof -- http://localhost:8800/images/person/3.jpeg
 
 //middleware
 app.use(express.json());
@@ -25,14 +26,15 @@ const storage = multer.diskStorage({
         cb(null, "public/images")
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        cb(null, Date.now()+file.originalname)
     }
 })
 
-const upload = multer({storage});
+const upload = multer({ storage });
+
 app.post("/api/upload", upload.single("file"), (req, res) => {
     try {
-        return res.status(200).json("File uploaded successfully")
+        return res.status(200).json(req.file.filename)
     } catch (err) {
         console.log(err)
     }
