@@ -7,14 +7,19 @@
       name="description"
       content="Web site created using create-react-app"
     />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400&display=swap" 
-   rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:3000/assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400&display=swap" 
+    rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3000/assets/style.css">
 
    
     <title>Social App</title>
   </head>
   <body>
+    <script>
+      // Required by some npm packages
+      window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
+  </script>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
