@@ -41,9 +41,9 @@ export default function Topbar() {
                 </div>
                 <Link to={`/profile/${user.username}`}>
                     <img src={
-                        user.profilePicure
-                        ? PF + "person/" + user.profilePicure
-                            : PF + "person/noAvatar.jpg"
+                        user.profilePicture
+                        ? PF + "person/" + user.profilePicture
+                        : PF + "person/noAvatar.jpg"
                     }
                         alt="" className="topbarImg" />
                 </Link>
