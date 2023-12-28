@@ -3,7 +3,8 @@ import { createContext, useReducer } from "react"
 import AuthReducer from "./AuthReducer"
 
 const INITIAL_STATE = {
-    user: {
+    user:
+    {
         _id: "65844d6dd70d6cfefc9a68ba",
         username:"john",
         email:"john@gmail.com",
