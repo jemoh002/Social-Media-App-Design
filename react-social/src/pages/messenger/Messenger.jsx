@@ -14,13 +14,20 @@ function Messenger() {
     const [currentChat, setCurrentChat] = useState(null)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
-    const [socket, setSocket] = useState(null)
+    const socket = useRef(io('ws://localhost:8900'))
     const { user } = useContext(AuthContext)
     const scrollRef = useRef()
-    
+
     useEffect(() => {
-        setSocket(io("ws://localhost:8900"))
-    },[])
+        if (socket) {
+            socket.current.emit("addUser", user?._id);
+            socket.current.on("getUsers", users => {
+                console.log(users)
+            })
+        }
+        
+    }, [user])
+    
 
     useEffect(() => {
         const getConversations = async () => {
