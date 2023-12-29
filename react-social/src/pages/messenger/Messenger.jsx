@@ -15,6 +15,7 @@ function Messenger() {
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
+    const [onlineUsers, setOnlineUsers] = useState([])
     const socket = useRef()
     const { user } = useContext(AuthContext)
     const scrollRef = useRef()
@@ -40,7 +41,9 @@ function Messenger() {
         if (socket) {
             socket.current.emit("addUser", user?._id);
             socket.current.on("getUsers", users => {
-                console.log(users)
+                setOnlineUsers(
+                    user.followings.filter((f) => users.some((u) => u.userId === f))
+                )
             })
         }
         
@@ -144,7 +147,7 @@ function Messenger() {
                                         ></textarea>
                                         <button className="chatSubmitButton" onClick={handleSubmit}>Send</button>
                                     </div>
-                                </> : <span className='noConversationText'>Open a conversation to start a chart</span>
+                                </> : <span className='noConversationText'>Open a conversation to start a chat</span>
                         }
                         
                         
@@ -153,8 +156,7 @@ function Messenger() {
 
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        <ChatOnline/>
-                        
+                        <ChatOnline onlineUsers={onlineUsers} currentId={user._id } setCurrentChat={setCurrentChat} />                       
                     </div>
                 </div>
             </div>

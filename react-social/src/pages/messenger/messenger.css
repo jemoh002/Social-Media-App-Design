@@ -17,7 +17,6 @@
 
 .chatBox{
     flex: 5.5;
-    
 }
 
 .chatBoxWrapper{
@@ -60,7 +59,9 @@
     
 }
 
-.chatMenuWrapper, .chatBoxWrapper, .chatOnlineWrapper{
+.chatMenuWrapper, 
+.chatBoxWrapper, 
+.chatOnlineWrapper{
     padding: 10px;
     height: 100%;
 }
