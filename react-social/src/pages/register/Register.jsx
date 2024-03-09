@@ -3,6 +3,10 @@ import "./register.css"
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
 
+const axiosInstance = axios.create({
+    baseURL:process.env.ACT_APP_API_URL
+})
+
 function Register() {
     const username = useRef();
     const email = useRef()
@@ -21,7 +25,7 @@ function Register() {
                 password: password.current.value
             };
             try {
-                await axios.post("/auth/register", user)
+                await axiosInstance.post("/auth/register", user)
                 navigate('/login')
             } catch (err) {
                 console.log(err)

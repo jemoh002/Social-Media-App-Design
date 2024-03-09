@@ -10,6 +10,10 @@ export default function Share() {
     const desc = useRef()
     const [file, setFile] = useState(null)
 
+    const axiosInstance = axios.create({
+        baseURL:process.env.ACT_APP_API_URL
+    })
+
     const submitHander = async (e) => {
         e.preventDefault()
         const newPost = {
@@ -23,7 +27,7 @@ export default function Share() {
             data.append("name", fileName);
 
             try {
-                const result = await axios.post("/upload", data, { headers: { 'Content-Type': 'multipart/form-data' } })
+                const result = await axiosInstance.post("/upload", data, { headers: { 'Content-Type': 'multipart/form-data' } })
                 // console.log(result.data)
                 newPost.image = result.data
             } catch (err) {
@@ -32,7 +36,7 @@ export default function Share() {
         }
 
         try {
-            await axios.post("/posts", newPost)
+            await axiosInstance.post("/posts", newPost)
             window.location.reload()
         } catch (err) {
             console.log(err)

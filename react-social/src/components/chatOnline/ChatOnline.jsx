@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import "./chatOnline.css"
 import axios from 'axios'
 
+const axiosInstance = axios.create({
+    baseURL:process.env.ACT_APP_API_URL
+})
+
 export default function ChatOnline({onlineUsers, currentId, setCurrentChat}) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
     const [friends, setFriends] = useState([])
@@ -9,7 +13,7 @@ export default function ChatOnline({onlineUsers, currentId, setCurrentChat}) {
 
     useEffect(() => {
         const getFriends = async () => {
-            const res = await axios.get("/users/friends/" + currentId);
+            const res = await axiosInstance.get("/users/friends/" + currentId);
             setFriends(res.data)
         };
 
@@ -22,7 +26,7 @@ export default function ChatOnline({onlineUsers, currentId, setCurrentChat}) {
 
     const handleClick = async (user) => {
         try {
-            const res = await axios.get(`/conversations/find/${currentId}/${user._id}`)
+            const res = await axiosInstance.get(`/conversations/find/${currentId}/${user._id}`)
             setCurrentChat(res.data)
         } catch (err) {
             console.log(err)

@@ -12,8 +12,11 @@ const conversationRoute = require("./routes/conversations")
 const messageRoute = require("./routes/messages")
 const path = require("path")
 require("dotenv").config();
+const cors = require("cors")
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
+
+app(cors());
 
 app.use("/images", express.static(path.join(__dirname, "public/images")))
 // This is how one can access the images thereof -- http://localhost:8800/images/person/3.jpeg

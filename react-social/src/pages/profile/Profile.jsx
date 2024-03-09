@@ -7,6 +7,10 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import axios from 'axios'
 import { useParams } from "react-router"
 
+const axiosInstance = axios.create({
+  baseURL:process.env.ACT_APP_API_URL
+})
+
 function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [user, setUser] = useState({});
@@ -15,7 +19,7 @@ function Profile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axiosInstance.get(`/users?username=${username}`);
       setUser(res.data)
     }
     fetchUser();

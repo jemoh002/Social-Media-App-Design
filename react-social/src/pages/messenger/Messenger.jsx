@@ -20,8 +20,12 @@ function Messenger() {
     const { user } = useContext(AuthContext)
     const scrollRef = useRef()
 
+    const axiosInstance = axios.create({
+        baseURL:process.env.ACT_APP_API_URL
+    })
+
     useEffect(() => {
-        socket.current = io("ws://localhost:8900")
+        socket.current = io("ws://34.125.234.99:8900")
         socket.current.on("getMessage", data => {
             setArrivalMessage({
                 sender: data.senderId,
@@ -53,7 +57,7 @@ function Messenger() {
     useEffect(() => {
         const getConversations = async () => {
             try {
-                const res = await axios.get("/conversations/" + user._id)
+                const res = await axiosInstance.get("/conversations/" + user._id)
                 setConversations(res.data)              
             } catch (err) {
                 console.log(err)
@@ -65,7 +69,7 @@ function Messenger() {
     useEffect(() => {
         const getMessages = async () => {
             try {
-                const res = await axios.get("/messages/" + currentChat?._id)
+                const res = await axiosInstance.get("/messages/" + currentChat?._id)
                 setMessages(res.data)
             } catch (err) {
                 console.log(err)
@@ -91,7 +95,7 @@ function Messenger() {
         })
 
         try {
-            const res = await axios.post("/messages", message)
+            const res = await axiosInstance.post("/messages", message)
             setMessages([...messages, res.data])
             setNewMessage("")
         } catch (err) {
@@ -156,7 +160,7 @@ function Messenger() {
 
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        <ChatOnline onlineUsers={onlineUsers} currentId={user._id } setCurrentChat={setCurrentChat} />                       
+                        <ChatOnline onlineUsers={onlineUsers} currentId={user._id} setCurrentChat={setCurrentChat} />                       
                     </div>
                 </div>
             </div>
