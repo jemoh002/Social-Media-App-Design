@@ -5,10 +5,8 @@ import axios from "axios"
 import { format } from "timeago.js" 
 import {Link} from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext'
+import { axiosInstance } from '../../utils/axiosInstance'
 
-const axiosInstance = axios.create({
-    baseURL:process.env.ACT_APP_API_URL
-})
 
 function Post({ post }) {
     const[like, setLike] = useState(post.likes.length)

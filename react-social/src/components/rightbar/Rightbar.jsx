@@ -6,6 +6,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
+import { axiosInstance } from '../../utils/axiosInstance'
+
 
 export default function Rightbar({ user }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
@@ -13,9 +15,6 @@ export default function Rightbar({ user }) {
     const { user: currentUser, dispatch } = useContext(AuthContext)
     const [followed, setFollowed] = useState(currentUser?.followings.includes(user?._id))
 
-    const axiosInstance = axios.create({
-        baseURL:process.env.ACT_APP_API_URL
-    })
 
 
     useEffect(() => {

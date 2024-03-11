@@ -1,5 +1,6 @@
 import React from 'react'
 import "./online.css"
+import { axiosInstance } from '../../utils/axiosInstance'
 
 function Online({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER

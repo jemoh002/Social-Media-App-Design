@@ -2,10 +2,8 @@ import React, { useRef } from 'react'
 import "./register.css"
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../../utils/axiosInstance'
 
-const axiosInstance = axios.create({
-    baseURL:process.env.ACT_APP_API_URL
-})
 
 function Register() {
     const username = useRef();

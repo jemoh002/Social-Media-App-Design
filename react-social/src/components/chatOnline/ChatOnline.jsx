@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./chatOnline.css"
 import axios from 'axios'
+import { axiosInstance } from '../../utils/axiosInstance'
 
-const axiosInstance = axios.create({
-    baseURL:process.env.ACT_APP_API_URL
-})
 
 export default function ChatOnline({onlineUsers, currentId, setCurrentChat}) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER

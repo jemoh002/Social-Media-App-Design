@@ -6,10 +6,8 @@ import Feed from '../../components/feed/Feed'
 import Rightbar from '../../components/rightbar/Rightbar'
 import axios from 'axios'
 import { useParams } from "react-router"
+import { axiosInstance } from '../../utils/axiosInstance'
 
-const axiosInstance = axios.create({
-  baseURL:process.env.ACT_APP_API_URL
-})
 
 function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER

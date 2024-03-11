@@ -5,10 +5,8 @@ import Post from '../post/Post'
 import axios from "axios"
 import { AuthContext } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
+import { axiosInstance } from '../../utils/axiosInstance'
 
-const axiosInstance = axios.create({
-  baseURL:process.env.ACT_APP_API_URL
-})
 
 export default function Feed({username}) {
   const [posts, setPosts] = useState([]);

@@ -3,6 +3,8 @@ import "./share.css"
 import { PermMedia, Label, Room, EmojiEmotions, Cancel } from '@material-ui/icons'
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
+import { axiosInstance } from '../../utils/axiosInstance'
+
 
 export default function Share() {
     const { user } = useContext(AuthContext)
@@ -10,9 +12,6 @@ export default function Share() {
     const desc = useRef()
     const [file, setFile] = useState(null)
 
-    const axiosInstance = axios.create({
-        baseURL:process.env.ACT_APP_API_URL
-    })
 
     const submitHander = async (e) => {
         e.preventDefault()

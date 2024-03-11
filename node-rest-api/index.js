@@ -16,15 +16,15 @@ const cors = require("cors")
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
 
-app(cors());
+app.use(cors());
 
-app.use("/images", express.static(path.join(__dirname, "public/images")))
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 // This is how one can access the images thereof -- http://localhost:8800/images/person/3.jpeg
 
 //middleware
 app.use(express.json());
-app.use(helmet())
-app.use(morgan("common"))
+app.use(helmet());
+app.use(morgan("common"));
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

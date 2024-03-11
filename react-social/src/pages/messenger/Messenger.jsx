@@ -6,7 +6,8 @@ import Message from '../../components/message/Message'
 import ChatOnline from '../../components/chatOnline/ChatOnline'
 import { AuthContext } from '../../context/AuthContext'
 import axios from "axios"
-import {io} from "socket.io-client"
+import { io } from "socket.io-client"
+import { axiosInstance } from '../../utils/axiosInstance'
 
 
 function Messenger() {
@@ -20,9 +21,7 @@ function Messenger() {
     const { user } = useContext(AuthContext)
     const scrollRef = useRef()
 
-    const axiosInstance = axios.create({
-        baseURL:process.env.ACT_APP_API_URL
-    })
+    
 
     useEffect(() => {
         socket.current = io("ws://34.125.234.99:8900")
