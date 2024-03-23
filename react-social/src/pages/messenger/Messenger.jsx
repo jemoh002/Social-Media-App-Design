@@ -5,7 +5,6 @@ import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/message/Message'
 import ChatOnline from '../../components/chatOnline/ChatOnline'
 import { AuthContext } from '../../context/AuthContext'
-import axios from "axios"
 import { io } from "socket.io-client"
 import { axiosInstance } from '../../utils/axiosInstance'
 

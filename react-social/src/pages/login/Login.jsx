@@ -9,9 +9,9 @@ function Login() {
     const password = useRef()
     const {user, isFetching, error, dispatch} = useContext(AuthContext)
 
-    const handleClick = (e) => {
+    const handleClick = async(e) => {
         e.preventDefault()
-        loginCall({email:email.current.value,password:password.current.value}, dispatch)
+        await loginCall({email:email.current.value,password:password.current.value}, dispatch)
     }
 
     console.log(user)

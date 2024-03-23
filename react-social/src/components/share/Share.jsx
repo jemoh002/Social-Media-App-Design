@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from 'react'
 import "./share.css"
 import { PermMedia, Label, Room, EmojiEmotions, Cancel } from '@material-ui/icons'
 import { AuthContext } from "../../context/AuthContext"
-import axios from "axios"
 import { axiosInstance } from '../../utils/axiosInstance'
 
 
